@@ -30,7 +30,7 @@ The work is an **educational exercise in an isolated VM**. It does not demonstra
 
 Located the working directory (`~/bof_exercise/code`) and verified the supplied files, including the `Makefile`, `generate_inputs.sh`, `vulnerable.c`, and `safe.c`. The lab was run within an isolated virtual machine to contain intentional memory-corruption experiments.
 
-![Task 1: Lab environment and provided files](assets/task-01-environment.png)
+![Task 1: Lab environment and provided files](assets/task-01-environment.webp)
 
 ### Task 2 — Build the four program variants
 
@@ -42,13 +42,13 @@ Used `make clean` and `make` to compile the vulnerable, stack-canary, AddressSan
 
 Executed both the vulnerable and safe versions with `Aisha`. Both completed successfully and reported `Role=student` because the name fits within the input buffer.
 
-![Task 3: Baseline input comparison](assets/task-03-baseline-input.png)
+![Task 3: Baseline input comparison](assets/task-03-baseline-input.webp)
 
 ### Task 4 — Generate boundary and oversized test inputs
 
 Generated test files of various lengths (8, 31, 32, 40, 64, 96, and 128 characters). With a 32-byte C string buffer, only **31 non-null characters** fit safely because a final byte is needed for `\0`.
 
-![Task 4: Generated test strings](assets/task-04-test-inputs.png)
+![Task 4: Generated test strings](assets/task-04-test-inputs.webp)
 
 ### Task 5 — Observe corruption in the unprotected executable
 
@@ -68,7 +68,7 @@ Used GDB breakpoints, stack-frame inspection, CPU-register output, and memory du
 
 Ran `vulnerable_canary` with the long input. The runtime emitted `stack smashing detected` and terminated the process rather than allowing the corrupted stack frame to return normally. The canary is a **detection/mitigation mechanism**, not a replacement for correct input validation.
 
-![Task 7: Stack protector detected corruption](assets/task-07-stack-canary.png)
+![Task 7: Stack protector detected corruption](assets/task-07-stack-canary.webp)
 
 ### Task 8 — Locate the defect with AddressSanitizer
 
@@ -80,7 +80,7 @@ Ran `vulnerable_asan` with the 64-character test. ASan reported `stack-buffer-ov
 
 Ran `safe` with boundary and oversized test inputs. The 31-character string was accepted, while 64 characters were rejected with an input-length error. The accompanying report describes using length validation and bounded copying to prevent corruption.
 
-![Task 9: Safe input accepted and oversized input rejected](assets/task-09-safe-input.png)
+![Task 9: Safe input accepted and oversized input rejected](assets/task-09-safe-input.webp)
 
 ### Task 10 — Connect the lab to real-world CVEs
 

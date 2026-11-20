@@ -22,7 +22,7 @@ The work is an **educational exercise in an isolated VM**. It does not demonstra
 | Test data | 8, 31, 32, 40, 64, 96, and 128-character inputs |
 | Notable observation | Overflow altered the neighboring `role` field; longer input caused a bus error |
 | Defensive result | Stack canary reported stack smashing; ASan pinpointed an out-of-bounds write; safe version rejected long input |
-| Evidence | 10 terminal screenshots and the 12-page lab report |
+| Evidence | 10 terminal screenshots |
 
 ## Assessment Workflow & Evidence
 
@@ -78,13 +78,13 @@ Ran `vulnerable_asan` with the 64-character test. ASan reported `stack-buffer-ov
 
 ### Task 9 — Test secure input handling
 
-Ran `safe` with boundary and oversized test inputs. The 31-character string was accepted, while 64 characters were rejected with an input-length error. The accompanying report describes using length validation and bounded copying to prevent corruption.
+Ran `safe` with boundary and oversized test inputs. The 31-character string was accepted, while 64 characters were rejected with an input-length error. The secure-coding implementation uses length validation and bounded copying to prevent corruption.
 
 ![Task 9: Safe input accepted and oversized input rejected](assets/task-09-safe-input.png)
 
 ### Task 10 — Connect the lab to real-world CVEs
 
-The lab report includes the following examples of software vulnerabilities related to buffer handling and memory corruption:
+The coursework identifies the following examples of software vulnerabilities related to buffer handling and memory corruption:
 
 | CVE | Product / component | Mitigation listed in lab report |
 | --- | --- | --- |
@@ -92,13 +92,13 @@ The lab report includes the following examples of software vulnerabilities relat
 | CVE-2024-31449 | Redis, Lua scripting bit library | Upgrade to a fixed Redis release branch |
 | CVE-2024-33599 | GNU C Library (`glibc`), `nscd` netgroup cache | Apply vendor security patches; fixed upstream in glibc 2.40 |
 
-These details are transcribed from the submitted coursework and are not presented as an independently updated vulnerability advisory.
+These details are drawn from the coursework and are not presented as an independently updated vulnerability advisory.
 
 ## Secure Coding Challenge
 
-The submitted report describes replacing unsafe `strcpy()`-based handling with an input-length check using `strnlen()`, a bounded `memcpy()`, and an explicit terminating null byte. The implementation rejects inputs longer than 31 characters before copying. The successful 31-character and rejected 64-character tests provide the validation evidence.
+The lab documentation describes replacing unsafe `strcpy()`-based handling with an input-length check using `strnlen()`, a bounded `memcpy()`, and an explicit terminating null byte. The implementation rejects inputs longer than 31 characters before copying. The successful 31-character and rejected 64-character tests provide the validation evidence.
 
-> **Source note:** The original `vulnerable.c`, `safe.c`, and `Makefile` were not among the files supplied for this repository creation. The repo preserves the actual screenshots and submitted PDF, rather than presenting reconstructed source as original coursework.
+> **Source note:** The original `vulnerable.c`, `safe.c`, and `Makefile` were not among the files supplied for this repository creation. The repository preserves the actual screenshots rather than presenting reconstructed source as original coursework.
 
 ## Repository Structure
 
@@ -117,7 +117,6 @@ CYSE211-Lab6-Buffer-Overflow/
 │   ├── task-08-address-sanitizer.png
 │   └── task-09-safe-input.png
 └── docs/
-    └── CYSE211-Lab6-Buffer-Overflow-Assignment.pdf
 ```
 
 ## Skills Demonstrated
@@ -129,6 +128,3 @@ CYSE211-Lab6-Buffer-Overflow/
 - **Secure programming:** Apply length checks, bounded copies, and correct null termination.
 - **Technical documentation:** Link observed behavior to evidence, mitigations, and CVE case studies.
 
-## Full Lab Report
-
-[View the 12-page CYSE 211 Lab 6 report](docs/CYSE211-Lab6-Buffer-Overflow-Assignment.pdf).

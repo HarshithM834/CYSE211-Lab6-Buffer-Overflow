@@ -21,7 +21,7 @@ This lab investigates **stack-based buffer overflows in C** and compares the beh
 | Test data | 8, 31, 32, 40, 64, 96, and 128-character inputs |
 | Notable observation | Overflow altered the neighboring `role` field; longer input caused a bus error |
 | Defensive result | Stack canary reported stack smashing; ASan pinpointed an out-of-bounds write; safe version rejected long input |
-| Evidence | 10 terminal screenshots |
+| Evidence | 10 terminal screenshots and reproduced 12-page PDF report |
 
 ## Assessment Workflow & Evidence
 
@@ -116,6 +116,7 @@ CYSE211-Lab6-Buffer-Overflow/
 │   ├── task-08-address-sanitizer.png
 │   └── task-09-safe-input.png
 └── docs/
+    └── CYSE211-Lab6-Buffer-Overflow-Assignment.pdf
 ```
 
 ## Skills Demonstrated
@@ -127,3 +128,8 @@ CYSE211-Lab6-Buffer-Overflow/
 - **Secure programming:** Apply length checks, bounded copies, and correct null termination.
 - **Technical documentation:** Link observed behavior to evidence, mitigations, and CVE case studies.
 
+## Full Lab Report
+
+[View the 12-page CYSE 211 Lab 6 report (PDF reproduction)](docs/CYSE211-Lab6-Buffer-Overflow-Assignment.pdf).
+
+*Repository note: This PDF copy was recreated from the supplied 12-page report text and the original lab screenshots. It preserves the task content and visual evidence, but its page layout and PDF bytes are not identical to the uploaded source document.*

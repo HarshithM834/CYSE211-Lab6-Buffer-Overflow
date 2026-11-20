@@ -36,7 +36,7 @@ Located the working directory (`~/bof_exercise/code`) and verified the supplied 
 
 Used `make clean` and `make` to compile the vulnerable, stack-canary, AddressSanitizer, and safe executables. This created a controlled comparison of behavior with and without runtime and compile-time protections.
 
-![Task 2: Four builds compiled](assets/task-02-build-variants.png)
+![Task 2: Four builds compiled](assets/task-02-build-variants.webp)
 
 ### Task 3 — Establish a safe-input baseline
 

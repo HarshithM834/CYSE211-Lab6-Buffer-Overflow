@@ -1,0 +1,8 @@
+# Generated binaries and core dumps
+core
+core.*
+*.o
+vulnerable
+vulnerable_canary
+vulnerable_asan
+safe

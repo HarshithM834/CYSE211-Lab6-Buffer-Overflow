@@ -9,7 +9,6 @@
 
 This lab investigates **stack-based buffer overflows in C** and compares the behavior of four builds: a deliberately vulnerable program, a stack-canary-protected build, an AddressSanitizer-instrumented build, and a length-validated safe version. The experiments demonstrate how an oversized argument can corrupt an adjacent stack variable or crash a process, how development tools identify the out-of-bounds write, and how input validation and bounded copying prevent it.
 
-The work is an **educational exercise in an isolated VM**. It does not demonstrate unauthorized access to an external system.
 
 ## At a Glance
 
